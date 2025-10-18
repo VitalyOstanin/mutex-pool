@@ -1,6 +1,6 @@
 {
   "name": "@vitalyostanin/mutex-pool",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple workers pool using async mutex",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
