@@ -1,9 +1,9 @@
-import { Semaphore, SemaphoreInterface } from 'async-mutex';
+import { Semaphore, type SemaphoreInterface } from 'async-mutex';
 
 export type Job = () => Promise<void>;
 
 export class MutexPool {
-  private readonly semaphore;
+  private readonly semaphore: Semaphore;
 
   constructor(private readonly size: number) {
     this.semaphore = new Semaphore(this.size);
@@ -19,7 +19,7 @@ export class MutexPool {
 
   async start(job: Job) {
     // wait for job to start
-    const [_, release] = await this.semaphore.acquire();
+    const [, release] = await this.semaphore.acquire();
 
     // don't wait for job to finish
     return {

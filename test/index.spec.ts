@@ -1,5 +1,5 @@
 import { scheduler } from "node:timers/promises";
-import { Job, MutexPool } from "../src";
+import { type Job, MutexPool } from "../src";
 
 describe('MutexPool', () => {
 
@@ -37,7 +37,6 @@ describe('MutexPool', () => {
     }
 
     const pool = new MutexPool(3);
-
     const demo = async (jobNumber: number) => {
       const semaphoreValue = pool.getSemaphoreValue();
 
@@ -51,7 +50,7 @@ describe('MutexPool', () => {
     for await (const jobNumber of createAsyncGenerator()) {
       const job: Job = () => demo(jobNumber);
 
-      const { jobFinished } = await pool.start(job);
+      await pool.start(job);
 
       // You can wait for jobFinished here. It will disable concurrency.
       // Usually there is no need to wait for each job to finish:

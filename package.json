@@ -6,20 +6,55 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "README-ru.md"
+  ],
+  "keywords": [
+    "mutex",
+    "async",
+    "pool",
+    "concurrency",
+    "semaphore",
+    "worker-pool",
+    "typescript",
+    "promise"
   ],
   "scripts": {
     "build": "tsup",
-    "test": "jest"
+    "dev": "tsup --watch",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "npm run build && npm test"
   },
   "author": "Vitaly Ostanin <vitaly.ostanin@mail.ru>",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/VitalyOstanin/mutex-pool#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitalyOstanin/mutex-pool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VitalyOstanin/mutex-pool/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "devDependencies": {
+    "@eslint/js": "^9.37.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.7.7",
+    "@vitalyostanin/eslint-prefer-de-morgan-law": "^1.0.2",
+    "eslint": "^9.37.0",
+    "jest": "^29.7.0",
     "ts-jest": "^29.3.1",
     "tsup": "^8.3.0",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.46.0"
   },
   "dependencies": {
     "async-mutex": "^0.5.0"
